@@ -27,5 +27,43 @@ class MainActivity : AppCompatActivity() {
             dialog1.show()
         }
 
+        val options = arrayOf("First", "Second", "Third")
+        val dialog2 = AlertDialog.Builder(this)
+            .setTitle("Choose one")
+            .setSingleChoiceItems(options, 0) { _, i ->
+                Toast.makeText(this, "You clicked ${options[i]}", Toast.LENGTH_SHORT).show()
+
+            }
+            .setPositiveButton("Approve") { _, _ ->
+                Toast.makeText(this, "Approved", Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton("Decline") { _, _ ->
+                Toast.makeText(this, "Declined", Toast.LENGTH_SHORT).show()
+            }
+            .create()
+        
+        btn_dialog2.setOnClickListener {
+            dialog2.show()
+        }
+
+        val dialog3 = AlertDialog.Builder(this)
+            .setTitle("Choose one")
+            .setMultiChoiceItems(options, booleanArrayOf(false, false, false)) { _, i, isChecked ->
+                if (isChecked) {
+                    Toast.makeText(this, "You checked ${options[i]}" , Toast.LENGTH_SHORT).show()
+                }  else {
+                    Toast.makeText(this, "You unchecked ${options[i]}", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setPositiveButton("Approve") { _, _ ->
+                Toast.makeText(this, "Approved", Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton("Decline") { _, _ ->
+                Toast.makeText(this, "Declined", Toast.LENGTH_SHORT).show()
+            }
+            .create()
+        btn_dialog3.setOnClickListener {
+            dialog3.show()
+        }
     }
 }
